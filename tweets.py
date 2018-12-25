@@ -29,6 +29,8 @@ with open('results22.csv') as csv_file:
       print (row[0])
       account_list.push(row[0])
 
+for tweet in auth_api.user_timeline(account_list[0]):
+      print(tweet.text)
 
 
 
