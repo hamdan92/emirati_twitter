@@ -1,3 +1,4 @@
+import tweepy
 from tweepy import *
 from datetime import datetime, date, time, timedelta
 from collections import Counter
