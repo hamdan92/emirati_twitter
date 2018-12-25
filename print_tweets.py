@@ -6,4 +6,4 @@ with open('tweets.csv') as csv_file:
   csv_reader=csv.reader(csv_file,delimiter=',')
   line_count=0
   for row in csv_reader:
-    account_list.append(row[1])
+    print (row[1])
