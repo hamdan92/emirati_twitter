@@ -26,7 +26,7 @@ with open('results22.csv') as csv_file:
     if line_count == 0 :
       line_count=line_count+1
     else:
-      print (row[0])
+      #print (row[0])
       account_list.append(row[0])
 
 
@@ -42,8 +42,13 @@ def processing_loop(csvfile,user,tweet):
 
 with open('tweets.csv', 'w') as csvfile:
   for user in account_list:
-    for tweet in auth_api.user_timeline(user):
-          processing_loop(csvfile,user,tweet.text.encode('utf-8'))
+    try:
+      tweets=auth_api.user_timeline(user)
+      for tweet in tweets(user):
+        processing_loop(csvfile,user,tweet.text.encode('utf-8'))
+    except tweepy.TweepError:
+      print("Failed to run the command on that user, Skipping...")
+
 
 
 
