@@ -17,7 +17,7 @@ auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 auth_api = API(auth)
 
-account_list = ['FaisalUAEme']
+account_list = []
 
 with open('results22.csv') as csv_file:
   csv_reader=csv.reader(csv_file,delimiter=',')
@@ -27,6 +27,7 @@ with open('results22.csv') as csv_file:
       line_count=line_count+1
     else:
       print (row[0])
+      account_list.push(row[0])
 
 
 
