@@ -24,35 +24,12 @@ with open('results22.csv') as csv_file:
   line_count=0
   for row in csv_reader:
     if line_count == 0 :
-      continue
+      line_count=line_count+1
     else:
-      print (row[1])
+      print (row[0])
 
 
-users = Cursor(auth_api.followers, screen_name="HHShkMohd").items()
 
-
-HEADER = ['Screenname','name','followers_count','friends_count','statuses_count','location']
-
-
-def processing_loop(csvfile):
-    csv_writer = csv.writer(csvfile)
-    csv_writer.writerow(HEADER)
-
-    while True:
-        try:
-            user = next(users)
-        except tweepy.TweepError:
-            t.sleep(60*20)
-            user = next(users)
-        except StopIteration:
-            break
-        csv_writer.writerow([user.screen_name,user.name,user.followers_count,user.friends_count,user.statuses_count,user.location])
-        csvfile.flush()
-        t.sleep(5)
-
-with open('results22.csv', 'w') as csvfile:
-    processing_loop(csvfile)
 
 
 """ if len(account_list) > 0:
