@@ -29,8 +29,23 @@ with open('results22.csv') as csv_file:
       print (row[0])
       account_list.append(row[0])
 
-for tweet in auth_api.user_timeline(account_list[0]):
-      print(tweet.text)
+
+
+
+
+def processing_loop(csvfile,user,tweet):
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerow([user,tweet])
+    csvfile.flush()
+        t.sleep(5)
+
+with open('tweets.csv', 'w') as csvfile:
+    processing_loop(csvfile)
+
+with open('tweets.csv', 'w') as csvfile:
+  for user in account_list:
+    for tweet in auth_api.user_timeline(user):
+          processing_loop(csvfile,user,tweet.text)
 
 
 
