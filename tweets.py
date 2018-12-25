@@ -43,7 +43,7 @@ def processing_loop(csvfile,user,tweet):
 with open('tweets.csv', 'w') as csvfile:
   for user in account_list:
     for tweet in auth_api.user_timeline(user):
-          processing_loop(csvfile,user,tweet.text)
+          processing_loop(csvfile,user,tweet.text.encode('utf-8'))
 
 
 
