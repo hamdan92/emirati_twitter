@@ -42,8 +42,7 @@ def processing_loop(csvfile,user,tweet):
 with open('tweets.csv', 'w') as csvfile:
   for user in account_list:
     try:
-      tweets=auth_api.user_timeline(user)
-      for tweet in tweets(user):
+      for tweet in auth_api.user_timeline(user):
         processing_loop(csvfile,user,tweet.text.encode('utf-8'))
     except tweepy.TweepError:
       print("Failed to run the command on that user, Skipping...")
