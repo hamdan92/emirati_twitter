@@ -37,10 +37,8 @@ def processing_loop(csvfile,user,tweet):
     csv_writer = csv.writer(csvfile)
     csv_writer.writerow([user,tweet])
     csvfile.flush()
-        t.sleep(5)
+    t.sleep(5)
 
-with open('tweets.csv', 'w') as csvfile:
-    processing_loop(csvfile)
 
 with open('tweets.csv', 'w') as csvfile:
   for user in account_list:
